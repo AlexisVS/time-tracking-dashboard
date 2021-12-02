@@ -11,9 +11,9 @@
     </div>
     <!-- Menu -->
     <div class="menu">
-      <span class="menu__item" @click="$emit('timeSequenceChanged', 'daily')">Daily</span>
-      <span class="menu__item" @click="$emit('timeSequenceChanged', 'weekly')">Weekly</span>
-      <span class="menu__item" @click="$emit('timeSequenceChanged', 'monthly')">Monthly</span>
+      <span class="menu__item" :class="active == 'daily' ? 'menu__item--active' : ''" @click="$emit('timeSequenceChanged', 'daily'); setActiveTo('daily')">Daily</span>
+      <span class="menu__item" :class="active == 'weekly' ? 'menu__item--active' : ''" @click="$emit('timeSequenceChanged', 'weekly'); setActiveTo('weekly')">Weekly</span>
+      <span class="menu__item" :class="active == 'monthly' ? 'menu__item--active' : ''" @click="$emit('timeSequenceChanged', 'monthly'); setActiveTo('monthly')">Monthly</span>
     </div>
   </div>
 </template>
@@ -24,9 +24,15 @@ export default {
   name: 'ProfilMenu',
   data () {
     return {
-      imageProfile: imageProfile
+      imageProfile: imageProfile,
+      active: 'weekly',
     }
   },
+  methods: {
+    setActiveTo (timeSequence) {
+      this.active = timeSequence
+    }
+  }
 }
 </script>
 
@@ -62,6 +68,8 @@ export default {
       font-size: .9rem
       color: var(--color-desaturated-blue)
       cursor: pointer
-      &:hover
+      &:hover, &:active, &:focus
+        color: white
+      &--active
         color: white
 </style>

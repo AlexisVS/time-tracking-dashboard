@@ -5,7 +5,7 @@
     </div>
     <div class="time__box">
       <div class="time__box__head">
-        <p class="time__box__head--title">{{ data.timeframes.title }}</p>
+        <p class="time__box__head--title">{{ data.title }}</p>
         <img src="../assets/images/icon-ellipsis.svg" alt />
       </div>
       <div class="time__box__body">
