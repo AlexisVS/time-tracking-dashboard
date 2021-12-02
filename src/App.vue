@@ -2,8 +2,8 @@
   <div id="app">
     <div class="wrapper">
       <div class="container">
-        <ProfilMenu class="profile_menu" />
-        <TimeBox v-for="data in timeData" :key="data.title" class=""/>
+        <ProfilMenu class="profile_menu" @timeSequenceChanged="updateTimeSequence"/>
+        <TimeBox v-for="data in timeData" :data="data" :timeSequence="timeSequence" :key="data.title"   />
       </div>
     </div>
   </div>
@@ -20,6 +20,7 @@ export default {
   },
   data () {
     return {
+      timeSequence: 'weekly',
       timeData: [
         {
           "title": "Travail",
@@ -125,29 +126,36 @@ export default {
         }
       ],
     }
-  }
+  },
+  methods: {
+    updateTimeSequence (sequence) {
+      console.log(sequence);
+      this.timeSequence = sequence
+    }
+  },
+  watch: {}
 }
 </script>
 
 <style lang="sass">
 
-  @font-face 
-    font-family: 'Rubik',sans-serif
-    src: url('./assets/fonts/Rubik-Light.ttf') format('ttf')
-    font-weight: 300
-    font-display:swap
+@font-face
+  font-family: 'Rubik',sans-serif
+  src: url('./assets/fonts/Rubik-Light.ttf') format('ttf')
+  font-weight: 300
+  font-display: swap
 
-  @font-face 
+  @font-face
     font-family: 'Rubik',sans-serif
     src: url('./assets/fonts/Rubik-Regular.ttf') format('ttf')
     font-weight: 400
-    font-display:swap
+    font-display: swap
 
-  @font-face 
+  @font-face
     font-family: 'Rubik',sans-serif
     src: url('./assets/fonts/Rubik-Medium.ttf') format('ttf')
     font-weight: 500
-    font-display:swap
+    font-display: swap
 
 // Primary
 $blue: hsl(246, 80%, 60%)

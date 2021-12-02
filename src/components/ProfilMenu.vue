@@ -11,9 +11,9 @@
     </div>
     <!-- Menu -->
     <div class="menu">
-      <span class="menu__item">Daily</span>
-      <span class="menu__item">Weekly</span>
-      <span class="menu__item">Monthly</span>
+      <span class="menu__item" @click="$emit('timeSequenceChanged', 'daily')">Daily</span>
+      <span class="menu__item" @click="$emit('timeSequenceChanged', 'weekly')">Weekly</span>
+      <span class="menu__item" @click="$emit('timeSequenceChanged', 'monthly')">Monthly</span>
     </div>
   </div>
 </template>
@@ -26,7 +26,7 @@ export default {
     return {
       imageProfile: imageProfile
     }
-  }
+  },
 }
 </script>
 
@@ -61,6 +61,7 @@ export default {
     &__item
       font-size: .9rem
       color: var(--color-desaturated-blue)
+      cursor: pointer
       &:hover
         color: white
 </style>
